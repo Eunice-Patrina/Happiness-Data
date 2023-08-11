@@ -15,5 +15,6 @@ df = pd.read_csv("happy.csv")
 xa = list(df[x.lower()].squeeze())
 ya = list(df[y.lower()].squeeze())
 
-fig = px.scatter(x=xa, y=ya)
+
+fig = px.scatter(x=xa, y=ya, labels={"x": x, "y": y})
 st.plotly_chart(fig)
