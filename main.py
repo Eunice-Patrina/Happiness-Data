@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+import plotly.express as px
 
 st.header("In Search for Happiness")
 
@@ -8,3 +10,10 @@ y = st.selectbox(options=["GDP", "Happiness", "Generosity"],
                  label="Select the data for Y-axis")
 
 st.subheader(f"{x} and {y}")
+
+df = pd.read_csv("happy.csv")
+xa = list(df[x.lower()].squeeze())
+ya = list(df[y.lower()].squeeze())
+
+fig = px.scatter(x=xa, y=ya)
+st.plotly_chart(fig)
